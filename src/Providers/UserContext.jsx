@@ -8,35 +8,35 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const loadUser = async () => {
-      try {
-        const token = localStorage.getItem("@KenzieHub:token");
+   const [user, setUser] = useState(null);
+   const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   const loadUser = async () => {
+  //     try {
+  //       const token = localStorage.getItem("@KenzieHub:token");
 
-        if (!token) {
-          return;
-        }
+  //       if (!token) {
+  //         return;
+  //       }
 
-        const { sub } = jwtDecode(token);
+  //       const { sub } = jwtDecode(token);
        
-        const response = await api.get(`users/${sub}`, {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
+  //       const response = await api.get(`users/${sub}`, {
+  //         headers: {
+  //           authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        setUser(response.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       setUser(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    loadUser();
-  }, []);
+  //   loadUser();
+  // }, []);
 
   const loginUserApi = async (formData) => {
     try {

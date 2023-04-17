@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { TechContext } from "../../Providers/techContext";
 import { useForm } from "react-hook-form";
+import { StyledModalEdit } from "./styled";
+import { StyledInput } from "../inputs/inputs";
 
 export const ModalEdit = () => {
   const { register, handleSubmit } = useForm({});
@@ -9,12 +11,15 @@ export const ModalEdit = () => {
   const tech = userTechs.find((userTech) => userTech.id === dialogId);
   
   return (
-    <dialog open={showDialogEdit}>
-      <span onClick={closeDialogEditTech}>X</span>
+    <StyledModalEdit open={showDialogEdit}>
+      <div>
+      <p>Tecnologia Detalhes</p>
+      <button onClick={closeDialogEditTech}>X</button>
+      </div>
       <form id={dialogId} onSubmit={handleSubmit(submitEdit)}>
         <label>
           Nome do projeto
-          {tech ? <input disabled placeholder={tech.title}></input> : <> </>}
+          {tech ? <StyledInput disabled placeholder={tech.title}></StyledInput> : <> </>}
           
         </label>
 
@@ -29,7 +34,7 @@ export const ModalEdit = () => {
 
         <button type="submit">Salvar Alterações</button>
       </form>
-        <button onClick={() => deleteTechs(dialogId)}>excluir</button>
-    </dialog>
+        <button className="btnDelete" onClick={() => deleteTechs(dialogId)}>excluir</button>
+    </StyledModalEdit>
   );
 };

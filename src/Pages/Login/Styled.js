@@ -119,7 +119,7 @@ export const StyledLogin = styled.div`
 
     form {
       width: 420px;
-      height: 60%;
+      height: 50%;
 
       margin: 25px auto 150px auto;
 

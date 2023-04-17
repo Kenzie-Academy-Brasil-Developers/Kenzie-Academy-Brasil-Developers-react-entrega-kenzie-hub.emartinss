@@ -17,16 +17,16 @@ export function Dashboard() {
   const { userTechs, registerTechs, openDialogEditTech, openDialogRegisterTech, closeDialogRegisterTech, showDialogRegister } =
     useContext(TechContext);
   const { logout, user, loading } = useContext(UserContext);
-  console.log(user)
+  
 
-  useEffect(() => {
+  // useEffect(() => {
    
-      if (!user) {
-        return navigate("/");
-      }
+  //     if (!user) {
+  //       return navigate("/");
+  //     }
    
     
-  }, []);
+  // }, []);
 
   const {
     register,
@@ -72,12 +72,12 @@ export function Dashboard() {
               <option>Avançado</option>
             </select>
           </label>
-          <div>
+         
             <button type="submit">Cadastrar tecnologia</button>
-          </div>
+          
         </form>
       </StyledModal>
-      <ModalEdit />
+      <ModalEdit  />
 
       <main>
         <div>

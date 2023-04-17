@@ -78,7 +78,7 @@ export const StyledDashboard = styled.div`
     margin: 0 auto;
 
     color: var(--grey-0);
-    
+
     div {
       button {
         width: 32px;
@@ -120,6 +120,18 @@ export const StyledDashboard = styled.div`
 
         height: 100%;
       }
+
+      ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color:#212529;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color:var(--grey-1);
+  }
     }
 
     li {
@@ -136,6 +148,11 @@ export const StyledDashboard = styled.div`
       background-color: var(--grey-4);
 
       border-radius: 4px;
+      :hover {
+        cursor: pointer;
+        background-color: #343b41;
+      }
+
 
       p {
         font-size: 1rem;
@@ -148,26 +165,38 @@ export const StyledDashboard = styled.div`
         color: var(--grey-1);
       }
     }
+
   }
 
   @media (min-width: 769px) {
     width: 60%;
     margin: 0 auto;
 
+    .divNav{
+      div:first-of-type{
+      width: 100%;
+    }
+    }
+
     div:first-of-type {
       justify-content: space-between;
       align-items: center;
+      
+      
     }
 
     div:nth-of-type(2) {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+
     }
 
     main {
       align-content: space-between;
       flex-wrap: wrap;
+
+      width: 100%;
     }
   }
 `;
@@ -244,49 +273,33 @@ export const StyledModal = styled.dialog`
       }
     }
 
-    div {
-      background-color: transparent;
+    button:first-of-type {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      gap: 15px;
+      background-color: var(--color-primary-Disable);
 
-      button:first-of-type {
-        display: flex;
-        align-items: center;
+      font-size: 16px;
+      font-weight: 500;
 
-        background-color: var(--color-primary-Disable);
+      height: 40px;
 
-        font-size: 16px;
-        font-weight: 500;
+      padding: 8px 22px;
+      color: #ffffff;
 
-        height: 40px;
+      border-radius: 4px;
 
-        padding: 8px 22px;
-        color: #ffffff;
+      margin-bottom: 25px;
 
-        border-radius: 4px;
-
-        :hover {
-          background-color: var(--Color-primary);
-          cursor: pointer;
-        }
-      }
-
-      button:nth-of-type(2) {
-        display: flex;
-        align-items: center;
-
-        background-color: var(--grey-1);
-
-        font-size: 16px;
-        font-weight: 500;
-
-        height: 40px;
-
-        padding: 5px 22px;
-        color: var(--grey-0);
-
-        border-radius: 4px;
+      :hover {
+        background-color: var(--Color-primary);
+        cursor: pointer;
       }
     }
+  }
+  @media (min-width: 769px) {
+    width: 23.0625rem;
+    height: 21.375rem;
   }
 `;
