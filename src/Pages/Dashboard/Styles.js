@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledDashboard = styled.div`
-  div:first-of-type {
+  div:nth-of-type(1) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,10 +9,10 @@ export const StyledDashboard = styled.div`
     width: 100%;
     height: 80px;
 
-    border-bottom: 1px solid var(--grey-3);
-
     div {
       width: 95%;
+
+      border-bottom: 1px solid var(--grey-3);
 
       a {
         height: 32px;
@@ -24,15 +24,15 @@ export const StyledDashboard = styled.div`
 
         border-radius: 4px;
       }
-    }
 
-    h1 {
-      font-size: 1.375rem;
-      font-weight: 700;
+      h1 {
+        font-size: 1.375rem;
+        font-weight: 700;
 
-      color: var(--Color-primary);
+        color: var(--Color-primary);
 
-      margin: 0 0 0 15px;
+        margin: 0 0 0 15px;
+      }
     }
   }
 
@@ -72,28 +72,81 @@ export const StyledDashboard = styled.div`
     flex-direction: column;
     justify-content: center;
 
-    width: 100%;
+    width: 95%;
 
     gap: 20px;
+    margin: 0 auto;
 
     color: var(--grey-0);
+    
+    div {
+      button {
+        width: 32px;
+        height: 32px;
+
+        font-size: 22px;
+
+        background-color: var(--grey-3);
+        color: #ffffff;
+
+        border-radius: 4px;
+
+        cursor: pointer;
+      }
+    }
+
+    div {
+      padding: 0 10px;
+    }
 
     h2 {
       font-size: 18px;
       font-weight: 600;
-
-      margin: 0 0 0 15px;
-
-      max-width: 100%;
     }
 
-    p {
-      font-size: 14px;
-      font-weight: 400;
+    ul {
+      width: 100%;
+      height: 450px;
+      background-color: var(--grey-3);
 
-      margin: 0 0 0 15px;
+      border-radius: 4px;
 
-      color: var(--grey-1);
+      overflow-y: auto;
+
+      h2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 100%;
+      }
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 95%;
+      height: 50px;
+
+      margin: 15px auto 0 auto;
+      padding: 0 25px 0 25px;
+
+      background-color: var(--grey-4);
+
+      border-radius: 4px;
+
+      p {
+        font-size: 1rem;
+        font-weight: 700;
+
+        color: #ffffff;
+      }
+
+      span {
+        color: var(--grey-1);
+      }
     }
   }
 
@@ -115,6 +168,125 @@ export const StyledDashboard = styled.div`
     main {
       align-content: space-between;
       flex-wrap: wrap;
+    }
+  }
+`;
+
+export const StyledModal = styled.dialog`
+  width: 90%;
+
+  background-color: var(--grey-3);
+
+  margin: 0 auto;
+
+  border-radius: 4px;
+  border: 1px solid var(--grey-2);
+
+  div {
+    display: flex;
+
+    background-color: var(--grey-2);
+    color: var(--grey-0);
+
+    padding: 0 16px;
+    margin-bottom: 40px;
+
+    max-height: 40px;
+    width: 100%;
+
+    border-radius: 4px 0 0 0;
+
+    p {
+      font-size: 0.8125rem;
+      font-weight: 700;
+    }
+    button {
+      background-color: transparent;
+      color: var(--grey-1);
+
+      cursor: pointer;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 12px;
+    gap: 30px;
+
+    label {
+      display: flex;
+      flex-direction: column;
+
+      color: var(--grey-0);
+
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    select {
+      height: 40px;
+
+      background-color: var(--grey-2);
+
+      padding: 0 13px;
+
+      border-radius: 4px;
+      border: none;
+
+      color: #868e96;
+
+      option {
+        background-color: var(--grey-1);
+        color: var(--grey-0);
+      }
+    }
+
+    div {
+      background-color: transparent;
+
+      gap: 15px;
+
+      button:first-of-type {
+        display: flex;
+        align-items: center;
+
+        background-color: var(--color-primary-Disable);
+
+        font-size: 16px;
+        font-weight: 500;
+
+        height: 40px;
+
+        padding: 8px 22px;
+        color: #ffffff;
+
+        border-radius: 4px;
+
+        :hover {
+          background-color: var(--Color-primary);
+          cursor: pointer;
+        }
+      }
+
+      button:nth-of-type(2) {
+        display: flex;
+        align-items: center;
+
+        background-color: var(--grey-1);
+
+        font-size: 16px;
+        font-weight: 500;
+
+        height: 40px;
+
+        padding: 5px 22px;
+        color: var(--grey-0);
+
+        border-radius: 4px;
+      }
     }
   }
 `;

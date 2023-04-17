@@ -1,61 +1,24 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { api } from "../../services/api";
 import { StyledRegister } from "./Styled";
 import { StyledInput } from "../../Components/inputs/inputs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";
-
-const registerSchema = z
-  .object({
-    name: z.string().min(1, "O nome é obrigatório"),
-    email: z.string().email("O e-mail é obrigatório"),
-    password: z
-      .string()
-      .min(8, "Senha mínima de 8 caracteres")
-      .regex(/(?=.*?[A-Z])/, "É necessário ao menos uma letra maiúscula")
-      .regex(/(?=.*?[a-z])/, "É necessário ao menos uma letra minúscula")
-      .regex(/(?=.*?[0-9])/, "É necessário pelo menos um número")
-      .regex(/(?=.*?[!@#$%^&*()_+,])/, "É necessário pelo menos um símbolo"),
-    confirm: z.string().min(1, "Confirme sua senha"),
-    bio: z.string().min(1, "A bio é obrigatório"),
-    contact: z.string().min(1, "Contato é obrigatório"),
-    course_module: z.string().min(1, "O módulo é obrigatório"),
-  })
-  .refine(({ password, confirm }) => confirm === password, {
-    message: "Senhas diferentes",
-    path: ["confirm"],
-  });
+import { Link } from "react-router-dom";
+import { registerSchema } from "./schema";
+import { useContext } from "react";
+import { UserContext } from "../../Providers/UserContext";
 
 export function RegisterForm() {
-  const navigate = useNavigate()
+  const {registerUserApi} = useContext(UserContext)
 
-  const registerUserApi = async (formData) => {
-    try {
-      const response = await api.post("/users", formData);
-      toast.success("Conta cadastrada com sucesso");
-      console.log(response);
-      
-      
-        setTimeout(() => {
-         navigate("/");
-        }, 3000);
-     
-      
-    } catch (error) {
-      const errorMessage = error.response.data.message;
-      toast.error(errorMessage);
-      console.error(error);
-    }
-  };
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(registerSchema),
+    mode:"onChange"
   });
 
   const submit = (formData) => {
@@ -123,6 +86,7 @@ export function RegisterForm() {
               {errors.course_module ? <p>{errors.course_module.message}</p> : null}
             </select>
           </label>
+          
           <button type="submit">Registrar</button>
         </form>
       </StyledRegister>

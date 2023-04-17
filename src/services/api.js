@@ -1,6 +1,9 @@
-import axios from 'axios';
-
+import axios from "axios";
+const token = JSON.parse(localStorage.getItem("@KenzieHub:token"));
 export const api = axios.create({
-    baseURL: 'https://kenziehub.herokuapp.com',
-    timeout: 5000,
+  baseURL: "https://kenziehub.herokuapp.com",
+  timeout: 5000,
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
 });

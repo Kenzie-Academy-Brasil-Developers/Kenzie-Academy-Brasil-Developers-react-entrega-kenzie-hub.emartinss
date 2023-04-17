@@ -1,32 +1,19 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { api } from "../../services/api";
 import { StyledLogin } from "../Login/Styled";
 import { StyledInput } from "../../Components/inputs/inputs";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useContext } from "react";
+import { ToastContainer } from "react-toastify";
+import { loginSchema } from "./schema";
+import { UserContext } from "../../Providers/UserContext";
 
-const loginSchema = z.object({
-  email: z.string().min(1, "Insira seu email "),
-  password: z.string().min(1, "Insira sua senha"),
-});
+
 
 export function Login() {
-  const loginUserApi = async (formData) => {
-    try {
-      const response = await api.post("/sessions", formData);
-      localStorage.setItem("@KenzieHub:token", JSON.stringify(response.data.token));
-      localStorage.setItem("@KenzieHub:userID", JSON.stringify(response.data.user.id));
-      localStorage.setItem("@KenzieHub:user", JSON.stringify(response.data.user));
-      window.location.replace("/dashboard");
-    } catch (error) {
-      toast.error("Email ou senha inválidos");
-      console.error(error);
-    }
-  };
 
+  const {loginUserApi} = useContext(UserContext)
   const {
     register,
     handleSubmit,
@@ -41,7 +28,7 @@ export function Login() {
 
   return (
     <StyledLogin>
-      <ToastContainer />
+      <ToastContainer position="top-right" autoClose={3000}/>
       <h1>Kenzie Hub</h1>
       <form onSubmit={handleSubmit(submit)}>
         <p>Login</p>
