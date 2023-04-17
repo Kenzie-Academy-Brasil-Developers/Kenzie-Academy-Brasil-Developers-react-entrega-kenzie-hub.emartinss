@@ -49,7 +49,7 @@ export const TechProvider = ({ children }) => {
   const registerTechs = async (formData) => {
     try {
       const response = await api.post("/users/techs", formData);
-      toast.success("Tecnologia adicionada");
+      toast.success("Tecnologia adicionada")
       setUserTechs([...userTechs, response.data]);
       closeDialogRegisterTech(true);
     } catch (error) {

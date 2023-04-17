@@ -1,10 +1,10 @@
 import { StyledButtons } from "../../Components/buttons/buttons";
 import { StyledDashboard, StyledModal } from "../Dashboard/Styles";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { StyledInput } from "../../Components/inputs/inputs";
 import { TechContext } from "../../Providers/techContext";
 import { ModalEdit } from "../../Components/modalEdit";
@@ -17,15 +17,13 @@ export function Dashboard() {
   const { userTechs, registerTechs, openDialogEditTech, openDialogRegisterTech, closeDialogRegisterTech, showDialogRegister } =
     useContext(TechContext);
   const { logout, user, loading } = useContext(UserContext);
-  
 
   // useEffect(() => {
-   
+
   //     if (!user) {
   //       return navigate("/");
   //     }
-   
-    
+
   // }, []);
 
   const {
@@ -72,12 +70,11 @@ export function Dashboard() {
               <option>Avançado</option>
             </select>
           </label>
-         
-            <button type="submit">Cadastrar tecnologia</button>
-          
+
+          <button type="submit">Cadastrar tecnologia</button>
         </form>
       </StyledModal>
-      <ModalEdit  />
+      <ModalEdit />
 
       <main>
         <div>

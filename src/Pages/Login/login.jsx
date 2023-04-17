@@ -9,8 +9,6 @@ import { ToastContainer } from "react-toastify";
 import { loginSchema } from "./schema";
 import { UserContext } from "../../Providers/UserContext";
 
-
-
 export function Login() {
 
   const {loginUserApi} = useContext(UserContext)
