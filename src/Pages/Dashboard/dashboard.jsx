@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { StyledInput } from "../../Components/inputs/inputs";
 import { TechContext } from "../../Providers/techContext";
 import { ModalEdit } from "../../Components/modalEdit";
@@ -16,15 +16,15 @@ export function Dashboard() {
 
   const { userTechs, registerTechs, openDialogEditTech, openDialogRegisterTech, closeDialogRegisterTech, showDialogRegister } =
     useContext(TechContext);
-  const { logout, user, loading } = useContext(UserContext);
+  const { logout } = useContext(UserContext);
 
-  // useEffect(() => {
+  useEffect(() => {
+    const token = localStorage.getItem("@KenzieHub:token");
+      if (!token) {
+        return navigate("/");
+      }
 
-  //     if (!user) {
-  //       return navigate("/");
-  //     }
-
-  // }, []);
+  }, []);
 
   const {
     register,
@@ -46,8 +46,8 @@ export function Dashboard() {
       </div>
 
       <div>
-        <h2>Olá, {userInformations.name}</h2>
-        <p>{userInformations.course_module}</p>
+        <h2>Olá, {userInformations && userInformations.name}</h2>
+        <p>{userInformations && userInformations.course_module}</p>
       </div>
 
       <StyledModal open={showDialogRegister} onClose={closeDialogRegisterTech}>

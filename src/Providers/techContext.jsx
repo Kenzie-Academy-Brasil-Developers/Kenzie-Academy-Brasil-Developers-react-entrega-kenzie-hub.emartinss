@@ -82,6 +82,7 @@ export const TechProvider = ({ children }) => {
       console.log(error);
     }
   };
+  
 
   return (
     <TechContext.Provider

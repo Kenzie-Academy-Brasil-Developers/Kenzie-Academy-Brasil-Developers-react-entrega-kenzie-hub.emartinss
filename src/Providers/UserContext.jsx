@@ -9,35 +9,7 @@ export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
 
    const [user, setUser] = useState(null);
-   const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   const loadUser = async () => {
-  //     try {
-  //       const token = localStorage.getItem("@KenzieHub:token");
-
-  //       if (!token) {
-  //         return;
-  //       }
-
-  //       const { sub } = jwtDecode(token);
-       
-  //       const response = await api.get(`users/${sub}`, {
-  //         headers: {
-  //           authorization: `Bearer ${token}`,
-  //         },
-  //       });
-
-  //       setUser(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   loadUser();
-  // }, []);
-
+  
   const loginUserApi = async (formData) => {
     try {
       const response = await api.post("/sessions", formData);
@@ -72,5 +44,5 @@ export const UserProvider = ({ children }) => {
     navigate("/");
   };
 
-  return <UserContext.Provider value={{ registerUserApi, loginUserApi, logout, user, loading }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ registerUserApi, loginUserApi, logout, user}}>{children}</UserContext.Provider>;
 };
