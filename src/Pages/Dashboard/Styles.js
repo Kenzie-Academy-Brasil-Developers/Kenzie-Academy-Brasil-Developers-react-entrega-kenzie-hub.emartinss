@@ -109,6 +109,8 @@ export const StyledDashboard = styled.div`
       height: 450px;
       background-color: var(--grey-3);
 
+      padding: 0 0 15px 0;
+
       border-radius: 4px;
 
       overflow-y: auto;

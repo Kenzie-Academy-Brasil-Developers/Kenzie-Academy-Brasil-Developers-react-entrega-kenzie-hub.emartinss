@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const StyledRegister = styled.div`
   width: 100%;
-  height: 100vh;
+
   background-color: var(--grey-4);
   color: white;
 
-  margin: 40px 0 0 0;
+  margin: 70px 0 0 0;
 
   div {
     display: flex;
@@ -46,7 +46,7 @@ export const StyledRegister = styled.div`
     height: 95%;
     width: 90%;
 
-    margin: 0 auto;
+    margin: 50px auto 0 auto;
     padding: 34px 18px;
     gap: 15px;
 

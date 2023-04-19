@@ -1,8 +1,7 @@
 import { StyledButtons } from "../../Components/buttons/buttons";
 import { StyledDashboard, StyledModal } from "../Dashboard/Styles";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { useContext, useEffect } from "react";
 import { StyledInput } from "../../Components/inputs/inputs";
@@ -20,10 +19,9 @@ export function Dashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem("@KenzieHub:token");
-      if (!token) {
-        return navigate("/");
-      }
-
+    if (!token) {
+      return navigate("/");
+    }
   }, []);
 
   const {
@@ -98,7 +96,7 @@ export function Dashboard() {
           </ul>
         )}
       </main>
-      <ToastContainer position="top-right" autoClose={3000} />
+      <Toaster />
     </StyledDashboard>
   );
 }

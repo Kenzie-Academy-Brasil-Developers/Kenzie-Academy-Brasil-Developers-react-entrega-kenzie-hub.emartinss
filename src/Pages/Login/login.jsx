@@ -10,8 +10,7 @@ import { loginSchema } from "./schema";
 import { UserContext } from "../../Providers/UserContext";
 
 export function Login() {
-
-  const {loginUserApi} = useContext(UserContext)
+  const { loginUserApi } = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -26,7 +25,7 @@ export function Login() {
 
   return (
     <StyledLogin>
-      <ToastContainer position="top-right" autoClose={3000}/>
+      <ToastContainer position="top-right" autoClose={3000} />
       <h1>Kenzie Hub</h1>
       <form onSubmit={handleSubmit(submit)}>
         <p>Login</p>

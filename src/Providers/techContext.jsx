@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
+
 
 export const TechContext = createContext({});
 
@@ -53,8 +54,7 @@ export const TechProvider = ({ children }) => {
       setUserTechs([...userTechs, response.data]);
       closeDialogRegisterTech(true);
     } catch (error) {
-      const errorMessage = error.response.data.message;
-      toast.error(errorMessage);
+      toast.error('Tecnologia já cadastrada');
       console.error(error);
     }
   };
@@ -66,8 +66,7 @@ export const TechProvider = ({ children }) => {
       setEditTech(!editTech);
       closeDialogEditTech(true);
     } catch (error) {
-      const errorMessage = error.response.data.message;
-      toast.error(errorMessage);
+      toast.error('Algo deu errado, tente novamente');
       console.error(error);
     }
   };

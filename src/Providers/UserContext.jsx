@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import jwtDecode from "jwt-decode";
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
