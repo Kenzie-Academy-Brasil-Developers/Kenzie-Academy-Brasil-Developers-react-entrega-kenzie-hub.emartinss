@@ -7,4 +7,3 @@ export const api = axios.create({
     Authorization: `Bearer ${token}`,
   },
 });
-console.log(token)
